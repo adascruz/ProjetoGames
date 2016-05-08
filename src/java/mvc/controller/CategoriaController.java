@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
  *
  * @author Ada
  */
+@Transactional
 @Controller
 public class CategoriaController {
     
@@ -24,16 +25,21 @@ public class CategoriaController {
     @Autowired
     private  CategoriaDAO categoriaDAO;
 
-    
-    @RequestMapping("/formAdicionarCategoria")
-    public String form(){
-        return "categoria/formularioAdicionarCategoria";
+   
+    @RequestMapping("/")
+    public String index(){
+        System.out.println("ENTROU NO index");
+        return "../../redirect";
     }
     
-    @Transactional
+    @RequestMapping("/formAdicionarCategoria")
+    public String formulario(){
+        System.out.println("ENTROU NO CategoriaDAO");
+        return "categoria/formularioAdicionarCategoria";
+    }
+       
     @RequestMapping("/adicionarCategoria")
     public String adicionar(Categoria categoria, BindingResult result ){
-        
         if(result.hasErrors()){
             return "categoria/formularioAdicionarCategoria";
         }

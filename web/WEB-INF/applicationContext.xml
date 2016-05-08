@@ -33,9 +33,10 @@
 
     <!-- ADD PERSISTENCE SUPPORT HERE (jpa, hibernate, etc) -->
     <!-- <jee:jndi-lookup jndi-name="jdbc/ProjetoGames" id="dataSource" /> -->
-    <context:annotation-config/> 
-    <tx:annotation-driven/>
+    <!-- <context:annotation-config/> -->
+    <!-- <tx:annotation-driven transaction-manager="transactionManager"/>  -->  
 
+    <!--         class="org.apache.commons.dbcp2.BasicDataSource" -->
     <bean id="dataSource"
         class="org.springframework.jdbc.datasource.DriverManagerDataSource"
         p:username = "root"
@@ -48,14 +49,13 @@
         <property name="ProjetoGamesPool" value="jdbc/ProjetoGamesPool" />  
     </bean> --> 
 
-    
-    <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">  
+    <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean" autowire="byName">  
         <!-- class= "org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean"> -->
          
         <property name="dataSource" ref="dataSource" />
         <!-- <property name="persistenceXmlLocation" value="META-INF/persistence.xml" /> -->
          <property name="persistenceUnitName" value="ProjetoGamesPU" />
-        <property name="jpaDialect" ref="jpaDialect" />
+     <!--   <property name="jpaDialect" ref="jpaDialect" />  -->
         <property name="jpaVendorAdapter">
             <bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter"/>
         </property> 
@@ -66,11 +66,9 @@
     <bean id="transactionManager" 
         class="org.springframework.orm.jpa.JpaTransactionManager">
         <property name="entityManagerFactory" ref="entityManagerFactory"/>
-        <property name="dataSource" ref="dataSource" />
-        <property name="jpaDialect" ref="jpaDialect" />
+    <!--    <property name="dataSource" ref="dataSource" />   -->
+    <!--    <property name="jpaDialect" ref="jpaDialect" />   -->
     </bean>
-      
-
-    
+   <tx:annotation-driven transaction-manager="transactionManager"/>  
 
 </beans>

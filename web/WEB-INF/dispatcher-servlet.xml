@@ -21,7 +21,6 @@
     <context:component-scan base-package="mvc.controller"/>
     <context:component-scan base-package="mvc.dao"/>
     <context:component-scan base-package="mvc.modelo"/>
-    <tx:annotation-driven/>
     
 
     <!--

@@ -17,7 +17,7 @@
                 welcome page and also update the welcome-file setting in</i>
             <tt>web.xml</tt>.</p>
         
-                <a href="<c:url value='/formAdicionarCategoria.do'/>"> CLSJSDS</a>
+                <a href="<c:url value='/formAdicionarCategoria'/>"> CLSJSDS</a>
 
     </body>
 </html>

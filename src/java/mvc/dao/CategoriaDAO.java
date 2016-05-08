@@ -20,6 +20,8 @@ public class CategoriaDAO {
 
     
     public void addCategoria(Categoria categoria){
+        System.out.println("ENTROU NO addCategoria ");
+        System.out.println("Categoria: " + categoria.getDescricao());
         manager.persist(categoria);
     }
     
